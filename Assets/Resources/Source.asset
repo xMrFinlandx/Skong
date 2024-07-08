@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a468c968125c4e2c80ad2b48db286dab, type: 3}
+  m_Name: Source
+  m_EditorClassIdentifier: 
+  _movementAcceleration: 100
+  _linearDrag: 20
+  _moveSpeed: 5
+  _fallTolerance: 0.5
+  _hangTime: 0.15
+  _jumpBuffer: 0.15
+  _jumpForce: 20
+  _airLinearDrag: 2.5
+  _fallMultiplier: 8
+  _lowJumpFallMultiplier: 5
+  _groundLayerMask:
+    serializedVersion: 2
+    m_Bits: 8
+  _overlapOffset: 0.05
+  _xOffset: 2.19
+  _yOffset: 0
+  _groundRayLength: 0.3
+  _airRayLength: 0.1
