@@ -36,7 +36,12 @@ namespace Utilities.FSM
         public void Update() => CurrentState.Update();
 
         public void FixedUpdate() => CurrentState.FixedUpdate();
-        
+
+        public void Dispose()
+        {
+            CurrentState?.Exit();
+        }
+
         private void Set(FsmState state)
         {
             PreviousState = CurrentState;

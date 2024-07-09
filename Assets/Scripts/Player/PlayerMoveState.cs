@@ -80,11 +80,13 @@ namespace Player
             }
 
             Move();
+
+            _isGrounded = IsGrounded();
+            _playerController.IsGrounded.Value = _isGrounded;
             
-            if (IsGrounded())
+            if (_isGrounded)
             {
                 ApplyGroundDrag();
-
                 _hangTimeCounter = _hangTime;
             }
             else

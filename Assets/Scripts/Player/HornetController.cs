@@ -1,5 +1,7 @@
-﻿using Player.Controls;
+﻿using System;
+using Player.Controls;
 using UnityEngine;
+using Utilities.Classes;
 using Utilities.FSM;
 using Zenject;
 
@@ -13,15 +15,17 @@ namespace Player
         [SerializeField] private Rigidbody2D _rigidbody;
         [SerializeField] private BoxCollider2D _collider;
 
+        public ReactiveProperty<bool> IsGrounded { get; } = new();
+        public bool IsFacingRight { get; private set; }
+        public int FacingDirectionModifier { get; private set; }
+        
         public Transform Transform => transform;
         public Rigidbody2D Rigidbody => _rigidbody;
         public Vector2 OverlapSize => _collider.size;
+        public Action GroundedAction { get; set; }
+        
+        private Vector2 _edgeDetectionPosition => transform.position + new Vector3(_playerControllerConfig.XOffset * FacingDirectionModifier, _playerControllerConfig.YOffset);
 
-        private Vector2 _edgeDetectionPosition => transform.position + new Vector3(_playerControllerConfig.XOffset * _facingDirectionModifier, _playerControllerConfig.YOffset);
-        
-        private bool _isFacingRight;
-        private int _facingDirectionModifier;
-        
         private readonly FiniteStateMachine _finiteStateMachine = new();
         private InputReader _inputReader;
 
@@ -33,8 +37,8 @@ namespace Player
 
         public void SetFacingDirection(bool isFacingRight)
         {
-            _isFacingRight = isFacingRight;
-            _facingDirectionModifier = isFacingRight ? 1 : -1;
+            IsFacingRight = isFacingRight;
+            FacingDirectionModifier = isFacingRight ? 1 : -1;
         }
         
         public bool CanClimb()
@@ -71,6 +75,11 @@ namespace Player
         private void FixedUpdate()
         {
             _finiteStateMachine.FixedUpdate();
+        }
+
+        private void OnDisable()
+        {
+            _finiteStateMachine.Dispose();
         }
 
         private void OnDrawGizmos()
