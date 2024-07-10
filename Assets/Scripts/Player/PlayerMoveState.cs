@@ -2,7 +2,7 @@
 using UnityEngine;
 using Utilities.FSM;
 
-namespace Player.States
+namespace Player
 {
     public class PlayerMoveState : FsmState
     {

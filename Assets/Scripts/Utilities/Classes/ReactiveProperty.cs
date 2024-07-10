@@ -1,4 +1,6 @@
-﻿namespace Utilities.Classes
+﻿using System;
+
+namespace Utilities.Classes
 {
     public class ReactiveProperty<T>
     {
