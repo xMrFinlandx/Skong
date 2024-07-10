@@ -17,10 +17,9 @@ namespace Player
         [SerializeField] private BoxCollider2D _collider;
 
         public ReactiveProperty<bool> IsGrounded { get; } = new();
-        public ReactiveProperty<float> HorizontalCashedDirection { get; } = new();
         public bool IsFacingRight { get; private set; }
         public int FacingDirectionModifier { get; private set; }
-
+        
         public Transform Transform => transform;
         public Rigidbody2D Rigidbody => _rigidbody;
         public Vector2 OverlapSize => _collider.size;
@@ -62,21 +61,11 @@ namespace Player
 
         private void Start()
         {
-            /*_inputReader.MovePerfomedEvent += OnMove;*/
-            
-            _finiteStateMachine.Add(new PlayerJumpState(_finiteStateMachine, this, _inputReader, _playerControllerConfig));
             _finiteStateMachine.Add(new PlayerMoveState(_finiteStateMachine, this, _inputReader, _playerControllerConfig));
-            _finiteStateMachine.Add(new PlayerFallState(_finiteStateMachine, this, _inputReader, _playerControllerConfig));
-            _finiteStateMachine.Add(new PlayerClimbState(_finiteStateMachine, this, _inputReader, _playerControllerConfig));
-
-            _finiteStateMachine.Set<PlayerFallState>();
+            _finiteStateMachine.Add(new PlayerClimbState(_finiteStateMachine, this, _playerControllerConfig));
+            _finiteStateMachine.Set<PlayerMoveState>();
             
             SetFacingDirection(true);
-        }
-
-        private void OnMove(Vector2 direction)
-        {
-
         }
 
         private void Update()
@@ -92,7 +81,6 @@ namespace Player
         private void OnDisable()
         {
             _finiteStateMachine.Dispose();
-            /*_inputReader.MovePerfomedEvent -= OnMove;*/
         }
 
         private void OnDrawGizmos()

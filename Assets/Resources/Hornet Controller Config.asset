@@ -16,8 +16,8 @@ MonoBehaviour:
   _linearDrag: 50
   _moveSpeed: 5
   _fallTolerance: 1
-  _hangTime: 0.2
-  _jumpBuffer: 0.2
+  _hangTime: 0.1
+  _jumpBuffer: 0.15
   _jumpForce: 25
   _airLinearDrag: 6
   _fallMultiplier: 12
