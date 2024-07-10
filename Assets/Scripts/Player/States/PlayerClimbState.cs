@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using Utilities.FSM;
 
-namespace Player
+namespace Player.States
 {
     public class PlayerClimbState : FsmState
     {

@@ -81,24 +81,19 @@ namespace Player
 
         private void OnAttack()
         {
-            var damageableList = GetEntitiesInCircle<IDamageable>(_attackOverlapCenter, _range, _enemyLayerMask);
+            var damageableList = GetComponentsInCircle<IDamageable>(_attackOverlapCenter, _range, _enemyLayerMask);
 
             foreach (var damageable in damageableList)
             {
                 damageable.ApplyDamage(1);
             }
 
-            var sum = 0f;
-
-            foreach (var energyRestorer in damageableList.OfType<IEnergyRestorer>())
-            {
-                sum += energyRestorer.Value;
-            }
+            var sum = damageableList.OfType<IEnergyRestorer>().Sum(item => item.Value);
             
             Debug.Log($"restored {sum} energy");
         }
 
-        private static List<T> GetEntitiesInCircle<T>(Vector2 center, float range, LayerMask layerMask)
+        private static List<T> GetComponentsInCircle<T>(Vector2 center, float range, LayerMask layerMask)
         {
             var results = new List<T>();
             var colliders = Physics2D.OverlapCircleAll(center, range, layerMask);
