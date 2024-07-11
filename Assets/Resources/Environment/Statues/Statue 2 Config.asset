@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff2ef7c280e2493fb3bc2c0fe084615e, type: 3}
+  m_Name: Statue 2 Config
+  m_EditorClassIdentifier: 
+  _sprite: {fileID: 21300000, guid: f876d3cd7509d034e84fd4d930229409, type: 3}
+  _hitsCount: 3
+  _totalShardsAmount: 14
+  _shardPrefab: {fileID: 9111111984359259672, guid: a8123c5848f1b0c4495120bec0576445, type: 3}
+  _spread: 5
+  _maxTorque: 10
+  _upwardForceRange: {x: 14, y: 24}
+  _shakeTime: 0.3
+  _strength: 0.03
+  _vibration: 20
+  _idleClip: {fileID: 7400000, guid: 8ab70830c8c8fa147a4f60c8e0862308, type: 2}
+  _animatorController: {fileID: 9100000, guid: 450e21be2fc2d15438ab47721f2b6746, type: 2}
