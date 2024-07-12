@@ -1,4 +1,5 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Entities
 {
@@ -22,6 +23,8 @@ namespace Entities
             Balance += amount;
             
             BalanceChangedAction?.Invoke(Balance, amount);
+            
+            Debug.Log($"Balance: {Balance}");
         }
 
         public bool TrySpend(int amount)

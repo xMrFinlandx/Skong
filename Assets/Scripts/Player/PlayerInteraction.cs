@@ -25,5 +25,11 @@ namespace Player
                 collectable.Collect(_playerStats);
             }
         }
+
+        private void OnDrawGizmos()
+        {
+            Gizmos.color = Color.cyan;
+            Gizmos.DrawWireSphere(transform.position, _overlapRange);
+        }
     }
 }
