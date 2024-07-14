@@ -2,6 +2,6 @@
 {
     public interface IEnergyRestorer : IDamageable
     {
-        public float Value { get; }
+        public int Value { get; }
     }
 }

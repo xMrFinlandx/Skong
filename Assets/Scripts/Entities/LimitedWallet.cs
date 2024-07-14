@@ -1,6 +1,6 @@
 ﻿namespace Entities
 {
-    public class LimitedWallet  : Wallet
+    public class LimitedWallet : Wallet
     {
         private readonly int _limit;
 

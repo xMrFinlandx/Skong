@@ -14,7 +14,7 @@ TagManager:
   - Player
   - Entities
   - Interactions
-  - 
+  - GroundCollider
   - 
   - 
   - 
@@ -40,4 +40,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Interactions
+    uniqueID: 3959499511
+    locked: 0
+  - name: Entities
+    uniqueID: 3085577709
+    locked: 0
+  - name: Ground
+    uniqueID: 2016826685
     locked: 0

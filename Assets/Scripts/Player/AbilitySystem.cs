@@ -1,15 +1,17 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using Entities;
 using Player.Controls;
+using Scriptables.Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 using Zenject;
 
 namespace Player
 {
-    public class PlayerCombat : MonoBehaviour
+    public class AbilitySystem : MonoBehaviour
     {
+        [Header("Combat Attack")]
         [SerializeField] private float _xOffset;
         [SerializeField] private float _yOffset;
         [SerializeField] private float _range;
@@ -21,6 +23,7 @@ namespace Player
         private Vector2 _cashedInputDirection;
 
         private IPlayerController _playerController;
+        private IPlayerStats _playerStats;
 
         private Vector2 _attackOverlapCenter => transform.position + (Vector3) (_attackDirection * new Vector3(_xOffset, _yOffset));
         
@@ -37,6 +40,8 @@ namespace Player
             _inputReader.MoveCancelledEvent += OnDirectionInputCancelled;
             
             _playerController = GetComponent<IPlayerController>();
+            _playerStats = GetComponent<IPlayerStats>();
+            
             _playerController.IsGrounded.ValueChangedEvent += OnGroundedChanged;
         }
 
@@ -89,8 +94,7 @@ namespace Player
             }
             
             var sum = damageableList.OfType<IEnergyRestorer>().Sum(item => item.Value);
-            
-            Debug.Log($"Energy restored: {sum}");
+            _playerStats.EnergyWallet.Add(sum);
         }
 
         private void OnDestroy()
