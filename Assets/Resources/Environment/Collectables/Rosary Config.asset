@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af695e26681f4a7b91e04c6091d8b384, type: 3}
+  m_Name: Rosary Config
+  m_EditorClassIdentifier: 
+  _shards:
+  - {fileID: 9111111984359259672, guid: 3157309223e1a8c44ab0307796bc2555, type: 3}
+  _maxTorque: 10
+  _spread: 10
+  _upwardForceRange: {x: 12, y: 22}

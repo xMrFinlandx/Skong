@@ -18,7 +18,7 @@ namespace Player
 
         private void FixedUpdate()
         {
-            var collectables = OverlapHelper.GetComponentsInCircle<ICollectable>(transform.position, _overlapRange, _layerMask);
+            var collectables = OverlapHelper.GetComponentsInCircle<BaseCollectable>(transform.position, _overlapRange, _layerMask);
 
             foreach (var collectable in collectables)
             {

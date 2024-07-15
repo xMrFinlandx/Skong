@@ -2,6 +2,7 @@
 using Entities;
 using Scriptables.Environment;
 using UnityEngine;
+using Utilities;
 
 namespace World.Environment
 {
@@ -14,21 +15,16 @@ namespace World.Environment
         [SerializeField] private Animator _animator;
         [SerializeField] private SpriteRenderer _spriteRenderer;
 
-        private int _hitsCount => _shardStatueConfig.HitsCount;
-        private int _totalShardsAmount => _shardStatueConfig.TotalShardsAmount;
-        private int _vibration => _shardStatueConfig.Vibration;
-
-        private float _spread => _shardStatueConfig.Spread;
-        private float _maxTorque => _shardStatueConfig.MaxTorque;
-        private float _shakeTime => _shardStatueConfig.ShakeTime;
-        private float _strength => _shardStatueConfig.Strength;
-        
-        private Shard _shardPrefab => _shardStatueConfig.ShardPrefab;
-        private Vector2 _upwardForceRange => _shardStatueConfig.UpwardForceRange;
-        
         private int _leftShardsAmount;
         private int _currentHealth;
         private int _shardsPerHit;
+        
+        private int _hitsCount => _shardStatueConfig.HitsCount;
+        private int _totalShardsAmount => _shardStatueConfig.TotalShardsAmount;
+        private int _vibration => _shardStatueConfig.Vibration;
+        
+        private float _shakeTime => _shardStatueConfig.ShakeTime;
+        private float _strength => _shardStatueConfig.Strength;
         
         public void ApplyDamage(int _)
         {
@@ -57,7 +53,7 @@ namespace World.Environment
 
             _spriteRenderer.sprite = _shardStatueConfig.Sprite;
             _animator.runtimeAnimatorController = _shardStatueConfig.AnimatorController;
-            _animator.Play(_shardStatueConfig.AnimationHash);
+            _animator.PlayWithRandomStart(_shardStatueConfig.AnimationClip);
             _collider.isTrigger = true;
         }
 
@@ -75,19 +71,8 @@ namespace World.Environment
             
             var count = _currentHealth == 0 ? _leftShardsAmount : _shardsPerHit;
             _leftShardsAmount -= count;
-            
-            for (int i = 0; i < count ; i++)
-            {
-                var shard = Instantiate(_shardPrefab, transform.position, Quaternion.identity);
 
-                var range = Random.Range(-_spread, _spread);
-                var torque = Random.Range(-_maxTorque, _maxTorque);
-                var upwardForce = Random.Range(_upwardForceRange.x, _upwardForceRange.y); 
-                var force = new Vector2(range, upwardForce);
-                
-                shard.Rigidbody.AddTorque(torque);
-                shard.Rigidbody.AddForce(force, ForceMode2D.Impulse);
-            }
+            CollectablesSpawner.Spawn(transform.position, _shardStatueConfig.CollectableConfig, count);
         }
         
         private void Shake()

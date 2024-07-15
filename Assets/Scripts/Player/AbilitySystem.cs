@@ -1,9 +1,7 @@
 ﻿using System.Linq;
 using Entities;
 using Player.Controls;
-using Scriptables.Player;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utilities;
 using Zenject;
 
