@@ -69,10 +69,12 @@ namespace World.Environment
             if (_leftShardsAmount == 0)
                 return;
             
-            var count = _currentHealth == 0 ? _leftShardsAmount : _shardsPerHit;
-            _leftShardsAmount -= count;
+            var valueToSpawn = _currentHealth == 0 ? _leftShardsAmount : _shardsPerHit;
+            _leftShardsAmount -= valueToSpawn;
+            
+            print(valueToSpawn);
 
-            CollectablesSpawner.Spawn(transform.position, _shardStatueConfig.CollectableConfig, count);
+            CollectablesSpawner.Spawn(transform.position, _shardStatueConfig.CollectableConfig, _shardStatueConfig.BurstConfig, valueToSpawn);
         }
         
         private void Shake()

@@ -187,6 +187,7 @@ MonoBehaviour:
   _animationClip: {fileID: 7400000, guid: 30e21e73c1d8c2f43ba26eb47549e507, type: 2}
   _collectCollider: {fileID: 4958674246894051677}
   _animator: {fileID: 2665407048117710217}
+  _spriteRenderer: {fileID: 8025163272904327657}
   _rigidbody: {fileID: 6017281411769020550}
 --- !u!50 &6017281411769020550
 Rigidbody2D:

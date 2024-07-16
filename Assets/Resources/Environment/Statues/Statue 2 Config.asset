@@ -15,7 +15,8 @@ MonoBehaviour:
   _sprite: {fileID: 21300000, guid: f876d3cd7509d034e84fd4d930229409, type: 3}
   _hitsCount: 3
   _totalShardsAmount: 14
-  _collectableConfig: {fileID: 11400000, guid: ff9304191def0f94aba59140ff002886, type: 2}
+  _collectableConfig: {fileID: 11400000, guid: c680c819b0ba663418afccf775f7e091, type: 2}
+  _burstConfig: {fileID: 11400000, guid: 90d97681445a6ee4da2fa9dd1a3e51fd, type: 2}
   _shakeTime: 0.3
   _strength: 0.03
   _vibration: 20

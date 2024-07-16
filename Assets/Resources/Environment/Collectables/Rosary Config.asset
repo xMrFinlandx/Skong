@@ -13,7 +13,6 @@ MonoBehaviour:
   m_Name: Rosary Config
   m_EditorClassIdentifier: 
   _shards:
-  - {fileID: 9111111984359259672, guid: 3157309223e1a8c44ab0307796bc2555, type: 3}
-  _maxTorque: 10
-  _spread: 10
-  _upwardForceRange: {x: 12, y: 22}
+  - _key: 1
+    _shards:
+    - {fileID: 9111111984359259672, guid: 3157309223e1a8c44ab0307796bc2555, type: 3}

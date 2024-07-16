@@ -5,14 +5,17 @@ namespace Utilities
 {
     public static class CollectablesSpawner
     {
-        public static void Spawn(Vector2 position, CollectableConfig collectableConfig, int count)
+        public static void Spawn(Vector2 position, CollectableConfig collectableConfig, BurstConfig burstConfig, int value)
         {
-            for (int i = 0; i < count; i++)
+            var coins = CoinChanger.GetCoins(value, collectableConfig.PossibleValues);
+
+            foreach (var coin in coins)
             {
-                var collectable = Object.Instantiate(collectableConfig.Prefab, position, Quaternion.identity);
+                var collectable = Object.Instantiate(collectableConfig.GetPrefab(coin), position, Quaternion.identity);
                 
-                collectable.Rigidbody.AddTorque(collectableConfig.Torque);
-                collectable.Rigidbody.AddForce(collectableConfig.Force, ForceMode2D.Impulse);
+                collectable.Rigidbody.AddTorque(burstConfig.Torque);
+                collectable.Rigidbody.AddForce(burstConfig.Force, ForceMode2D.Impulse);
+                collectable.SpriteRenderer.sortingOrder = Random.Range(0, 100);
             }
         }
     }

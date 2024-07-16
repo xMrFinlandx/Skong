@@ -13,10 +13,8 @@ MonoBehaviour:
   m_Name: Shard Config
   m_EditorClassIdentifier: 
   _shards:
-  - {fileID: 9111111984359259672, guid: a8123c5848f1b0c4495120bec0576445, type: 3}
-  - {fileID: 9111111984359259672, guid: d72d372f4bfbed74d99ad05eba86322c, type: 3}
-  - {fileID: 9111111984359259672, guid: c621a9dde3aec0b4fa2ba9f18fc42902, type: 3}
-  - {fileID: 9111111984359259672, guid: c9a2930a48889e24c9c69fbeb71b07d1, type: 3}
-  _maxTorque: 10
-  _spread: 10
-  _upwardForceRange: {x: 12, y: 22}
+  - _key: 1
+    _shards:
+    - {fileID: 9111111984359259672, guid: a8123c5848f1b0c4495120bec0576445, type: 3}
+    - {fileID: 9111111984359259672, guid: d72d372f4bfbed74d99ad05eba86322c, type: 3}
+    - {fileID: 9111111984359259672, guid: c621a9dde3aec0b4fa2ba9f18fc42902, type: 3}

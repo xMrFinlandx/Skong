@@ -14,6 +14,7 @@ namespace Entities.Tests
         [SerializeField] private int _shardsAmount = 2;
         [SerializeField] private CollectableConfig _rosaryConfig;
         [SerializeField] private CollectableConfig _shardsConfig;
+        [SerializeField] private BurstConfig _burstConfig;
         
         public int Value => _energyToRestore;
 
@@ -29,8 +30,8 @@ namespace Entities.Tests
 
         public void Kill()
         {
-            CollectablesSpawner.Spawn(transform.position, _rosaryConfig, _rosaryAmount);
-            CollectablesSpawner.Spawn(transform.position, _shardsConfig, _shardsAmount);
+            CollectablesSpawner.Spawn(transform.position, _rosaryConfig, _burstConfig, _rosaryAmount);
+            CollectablesSpawner.Spawn(transform.position, _shardsConfig, _burstConfig, _shardsAmount);
             Destroy(gameObject);
         }
         

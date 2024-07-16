@@ -1,7 +1,5 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 using Utilities;
-using Random = UnityEngine.Random;
 
 namespace Entities
 {
@@ -14,10 +12,12 @@ namespace Entities
         [Space]
         [SerializeField] private Collider2D _collectCollider;
         [SerializeField] private Animator _animator;
+        [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Rigidbody2D _rigidbody;
         
         private float _enableTimeCounter;
-        
+
+        public SpriteRenderer SpriteRenderer => _spriteRenderer;
         public Rigidbody2D Rigidbody => _rigidbody;
         protected int Value => _value;
 

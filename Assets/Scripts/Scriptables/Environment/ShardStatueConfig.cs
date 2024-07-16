@@ -12,6 +12,7 @@ namespace Scriptables.Environment
         [SerializeField] private int _totalShardsAmount = 15;
         [Header("Shard Settings")]
         [SerializeField, Expandable] private CollectableConfig _collectableConfig;
+        [SerializeField, Expandable] private BurstConfig _burstConfig;
         [Header("Shake Animation")]
         [SerializeField] private float _shakeTime = .5f;
         [SerializeField] private float _strength = .02f;
@@ -30,6 +31,7 @@ namespace Scriptables.Environment
         public RuntimeAnimatorController AnimatorController => _animatorController;
         public Sprite Sprite => _sprite;
         public CollectableConfig CollectableConfig => _collectableConfig;
+        public BurstConfig BurstConfig => _burstConfig;
         public AnimationClip AnimationClip => _idleClip;
     }
 }

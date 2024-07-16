@@ -1,20 +1,18 @@
-﻿using Entities;
+﻿using System.Collections.Generic;
+using System.Linq;
+using Entities;
 using UnityEngine;
-using Utilities;
-using Random = UnityEngine.Random;
+using Utilities.Structures;
 
 namespace Scriptables.Environment
 {
     [CreateAssetMenu(fileName = "New Collectable Config", menuName = "World/Collectable Config", order = 0)]
     public class CollectableConfig : ScriptableObject 
     {
-        [SerializeField] private BaseCollectable[] _shards;
-        [SerializeField] private float _maxTorque;
-        [SerializeField] private float _spread;
-        [SerializeField] private Vector2 _upwardForceRange;
+        [SerializeField] private CollectableData[] _shards;
+        
+        public IList<int> PossibleValues => _shards.Select(item => item.Key).OrderByDescending(key => key).ToArray();
 
-        public BaseCollectable Prefab => _shards.GetRandom();
-        public float Torque => Random.Range(-_maxTorque, _maxTorque);
-        public Vector2 Force => new(Random.Range(-_spread, _spread), Random.Range(_upwardForceRange.x, _upwardForceRange.y));
+        public BaseCollectable GetPrefab(int value) => _shards.FirstOrDefault(item => item.Key == value).Prefab;
     }
 }
